@@ -67,9 +67,9 @@ app.all("*", (req, res, next) => {
   next(new Error(`URL ${req.originalUrl} does not exist on this server !!!`));
 });
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production" || process.env.IS_DOCKER === "true") {
   const port = process.env.PORT || 8000;
-  const server = app.listen(port, () => {
+  const server = app.listen(port, "0.0.0.0", () => {
     console.log(`App running on port ${port}`);
   });
   process.on("unhandledRejection", (err: Error) => {
