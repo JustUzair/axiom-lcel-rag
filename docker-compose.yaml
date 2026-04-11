@@ -3,6 +3,7 @@ services:
     build:
       context: ./agent
       dockerfile: Dockerfile
+    image: 0xjustuzair/axiom-lcel-rag-backend:latest
     ports:
       - "8000:8000"
     env_file:
@@ -16,6 +17,7 @@ services:
       dockerfile: Dockerfile
       args:
         - NEXT_PUBLIC_API_URL=http://localhost:8000
+    image: 0xjustuzair/axiom-lcel-rag-frontend:latest
     ports:
       - "3000:3000"
     env_file:
