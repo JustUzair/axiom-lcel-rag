@@ -68,7 +68,7 @@ app.all("*", (req, res, next) => {
 });
 
 if (process.env.NODE_ENV !== "production" || process.env.IS_DOCKER === "true") {
-  const port = process.env.PORT || 8000;
+  const port = Number(process.env.PORT) || 8000;
   const server = app.listen(port, "0.0.0.0", () => {
     console.log(`App running on port ${port}`);
   });
